@@ -154,4 +154,4 @@ FROM typed
 GROUP BY TypeOfCustomer
 ORDER BY CustomerCount DESC;
 
---
+
