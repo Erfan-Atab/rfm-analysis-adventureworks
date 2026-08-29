@@ -50,6 +50,13 @@ AdventureWorks 2022 OLTP
 تصمیم: استانه مقایسه جمع گروهی `LineTotal` هر `SalesOrderID` سفارش در `Sales.SalesOredrDetail` با `SubTotal`، 0.01 در نظر گرفته شد.  
 چون `LineTotal` اعشاری است و امکان خطا ایجاد میکند.  
 
+## Data Quality Methology  
+تصمیم: بررسی NULL بودن ستون های مهم از طریق Metadata  
+دلیل: توابع تجمیعی NULL را نادیده میگیرند واین موضوع میتواند باعث شود شاخص های RFM کمتر از واقعیت بشوند. اسکن کردن آن ها هزینه بی مورد است.  
+محدودیت: این کار فقط NULL واقعی را پوشش میدهد و مقادیر رشته خالی یا نامعتبر با Metadata قابل تشخیص نیستند.  
+هر سه مورد `OrderDate` و `CustomerID` و `LineTotal` قابلیت NULL بودن، ندارند.  
+نتیجه: Pass  
+
 
 
 
