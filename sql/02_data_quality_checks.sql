@@ -47,21 +47,21 @@ WHERE (lineTotal <= 0) OR (OrderQty <= 0) OR  (UnitPrice <= 0)
 
 -- Are customers with very low Monetary real?
 SELECT CustomerID,
-		SUM(LineTotal) AS Monatery,
-		COUNT(*) AS NumberOFiTEMSOrdered,
-		COUNT(DISTINCT sod.SalesOrderID) AS NumberOfOrders
+		SUM(LineTotal) AS TotalRevenue,
+		COUNT(*) AS LineItemCount,
+		COUNT(DISTINCT sod.SalesOrderID) AS OrderCount
 		
 FROM Sales.SalesOrderDetail AS sod
-LEFT JOIN Sales.SalesOrderHeader AS soh ON sod.SalesOrderID = soh.SalesOrderID
-GROUP BY CustomerID
-HAVING (SUM(LineTotal) < 5)
+INNER JOIN Sales.SalesOrderHeader AS soh ON sod.SalesOrderID = soh.SalesOrderID
+GROUP BY soh.CustomerID
+HAVING SUM(LineTotal) < 5
 ORDER BY SUM(LineTotal) ASC
 
 -- Outliers from high end of distribution
-SELECT TOP 10 SalesOrderID AS IDOfOrder,
-		UnitPrice AS PriceOfUnit,
-		OrderQty AS NumberOfItems,
-		LineTotal AS TotalLine
+SELECT TOP 10 SalesOrderID,
+		UnitPrice ,
+		OrderQty,
+		LineTotal
 FROM Sales.SalesOrderDetail
 ORDER BY LineTotal DESC
 

@@ -95,7 +95,8 @@ GROUP BY
 		END
 
 -- Count of orders in each status
-SELECT COUNT(*)
+SELECT Status,
+		COUNT(*)
 FROM Sales.SalesOrderHeader
 GROUP BY Status;
 
