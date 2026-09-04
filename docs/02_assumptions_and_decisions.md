@@ -57,6 +57,9 @@ AdventureWorks 2022 OLTP
 هر سه مورد `OrderDate` و `CustomerID` و `LineTotal` قابلیت NULL بودن، ندارند.  
 نتیجه: Pass  
 
+## تصمیم: Schema
 
+تصمیم: اشیای پروژه در Schema اختصاصی rfm  
+دلیل: تفکیک اشیای پروژه از AdventureWorks، و اسکریپتی که کسی با Clone کردن Repository بتواند بدون خطا اجرا کند  
 
 
