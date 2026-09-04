@@ -1,0 +1,5 @@
+﻿CustomerType,Metric,TopValue,CustomerCount,CountRank,DistinctValueCount,TopValueSharePct
+Individual,Monetary,4.990000,494,1,4651,2.67
+Individual,Recency,48.000000,94,1,732,0.51
+Store with rep,Monetary,419.458900,3,1,630,0.47
+Store with rep,Recency,61.000000,179,1,32,28.19
