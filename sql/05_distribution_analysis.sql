@@ -114,3 +114,44 @@ SELECT DISTINCT CustomerType,
 FROM rfm.vw_CustomerRFM
 ORDER BY CustomerType;
 	
+---------------------------------------------------------
+SELECT DISTINCT CustomerType,
+		COUNT(*) OVER(PARTITION BY CustomerType) AS CustomerCount,
+		CAST(AVG(CAST(DATEDIFF(DAY, FirstOrderDate, LastOrderDate) / (Frequency - 1) AS decimal(10,2))) 
+			OVER(PARTITION BY CustomerType) AS decimal(10,2)) AS AvgDaysBetweenOrders,
+		PERCENTILE_CONT(0.5)
+		WITHIN GROUP(ORDER BY CAST(DATEDIFF(DAY, FirstOrderDate, LastOrderDate) / (Frequency - 1) AS decimal(10,2)))
+		OVER(PARTITION BY CustomerType) AS MedianDaysBetweenOrders
+FROM rfm.vw_CustomerRFM
+WHERE Frequency > 1
+ORDER BY CustomerType;
+
+--
+WITH bucket AS (
+	SELECT CustomerType,
+			CASE 
+				WHEN Recency < 90 THEN '1'
+				WHEN Recency >= 90 AND Recency < 180 THEN '2'
+				WHEN Recency >= 180 AND Recency < 365 THEN '3'
+				WHEN Recency >= 365 AND Recency < 730 THEN '4'
+				ELSE '5'
+				END AS BucketOrder,
+			CASE 
+				WHEN Recency < 90 THEN '0-90'
+				WHEN Recency >= 90 AND Recency < 180 THEN '90-180'
+				WHEN Recency >= 180 AND Recency < 365 THEN '180-365'
+				WHEN Recency >= 365 AND Recency < 730 THEN '365-730'
+				ELSE '>730'
+				END AS RecencyBucket
+	FROM rfm.vw_CustomerRFM
+)
+SELECT CustomerType,
+		BucketOrder,
+		RecencyBucket,
+		COUNT(*) AS CustomerCount,
+		CAST(((CAST(COUNT(*) AS decimal(10,2))) /
+								(CAST(SUM(COUNT(*)) OVER(PARTITION BY CustomerType) AS decimal(10,2))) * 100) AS decimal(5,2)) AS SharePct
+FROM bucket
+GROUP BY CustomerType, BucketOrder, RecencyBucket
+ORDER BY CustomerType, BucketOrder;
+
