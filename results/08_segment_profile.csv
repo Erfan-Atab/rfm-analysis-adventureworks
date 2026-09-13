@@ -1,0 +1,17 @@
+﻿Segment,CustomerType,CustomerCount,AvgRecency,AvgFrequency,AvgMonetary,MedianRecency,MedianFrequency,MedianMonetary,TotalRevenue,PopulationSharePct,RevenueSharePct
+Churn Risk,Individual,1814,283.25,2.10,4391.16,273,2,4397.75,7965559.87,9.81,27.13
+High Value,Individual,2046,79.30,2.42,4449.38,79,2,4464.48,9103424.14,11.07,31.01
+High Value Lapsed,Individual,1258,474.58,1.00,2342.37,348,1,2398.05,2946701.76,6.81,10.04
+Low Value,Individual,1760,287.50,1.00,23.74,288,1,26.97,41783.46,9.52,0.14
+Loyal Small Spender,Individual,745,121.71,2.07,65.01,106,2,68.70,48431.94,4.03,0.16
+Medium Value,Individual,1464,111.03,2.26,305.16,129,2,169.80,446757.04,7.92,1.52
+Mid Recency Active,Individual,5291,225.32,1.31,1242.83,201,1,103.48,6575815.20,28.62,22.40
+New Customer,Individual,4106,71.51,1.00,543.16,73,1,69.99,2230203.81,22.21,7.60
+New Customer,Store with rep,88,61.00,3.74,72822.41,61,4,23432.83,6408372.01,13.86,7.96
+Mid Recency Active,Store with rep,255,239.23,5.98,113022.53,92,5,30845.61,28820743.95,40.16,35.81
+Medium Value,Store with rep,61,81.84,8.25,49463.63,92,8,45502.97,3017281.14,9.61,3.75
+Loyal Small Spender,Store with rep,33,109.12,8.33,10575.44,92,8,10598.54,348989.66,5.20,0.43
+Low Value,Store with rep,64,464.22,2.19,1362.25,427,2,1183.35,87183.90,10.08,0.11
+High Value Lapsed,Store with rep,43,486.40,4.00,202056.78,458,4,158899.15,8688441.63,6.77,10.79
+High Value,Store with rep,43,61.00,9.79,357574.48,61,9,361999.06,15375702.83,6.77,19.10
+Churn Risk,Store with rep,48,219.27,9.17,369603.94,122,8,345504.49,17740989.05,7.56,22.04

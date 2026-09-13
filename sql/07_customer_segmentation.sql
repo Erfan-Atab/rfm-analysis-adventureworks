@@ -113,12 +113,12 @@ SELECT CustomerID,
 		CASE
 			WHEN RScore IN (4,5) AND FScore IN (4,5) AND MScore IN (4,5) THEN 'High Value'
 			WHEN RScore IN (1,2) AND FScore IN (4,5) AND MScore IN (4,5) THEN 'Churn Risk'
-			WHEN RScore IN (1,2) AND FScore = 1 AND MScore IN (4,5) THEN 'High Value One-Time'
+			WHEN RScore IN (1,2) AND FScore = 1 AND MScore IN (4,5) THEN 'High Value Lapsed'
 			WHEN RScore IN (4,5) AND FScore = 1 THEN 'New Customer'
 			WHEN FScore IN (4,5) AND MScore IN (1,2) THEN 'Loyal Small Spender'
 			WHEN RScore IN (3,4,5) AND MScore = 3 THEN 'Medium Value'
 			WHEN RScore IN (1,2) AND FScore = 1 AND MScore = 1 THEN 'Low Value'
-			ELSE 'Unclassified'
+			ELSE 'Mid Recency Active'
 			END AS Segment
 FROM Scores
 ORDER BY CustomerType, Segment;
@@ -185,7 +185,7 @@ SELECT CustomerID,
 			WHEN FScore IN (4,5) AND MScore IN (1,2) THEN 'Loyal Small Spender'
 			WHEN RScore IN (3,4,5) AND MScore = 3 THEN 'Medium Value'
 			WHEN RScore IN (1,2) AND FScore = 1 AND MScore = 1 THEN 'Low Value'
-			ELSE 'Unclassified'
+			ELSE 'Mid Recency Active'
 			END AS Segment
 FROM Scores
 )
@@ -257,7 +257,7 @@ SELECT CustomerID,
 			WHEN FScore IN (4,5) AND MScore IN (1,2) THEN 'Loyal Small Spender'
 			WHEN RScore IN (3,4,5) AND MScore = 3 THEN 'Medium Value'
 			WHEN RScore IN (1,2) AND FScore = 1 AND MScore = 1 THEN 'Low Value'
-			ELSE 'Unclassified'
+			ELSE 'Mid Recency Active'
 			END AS Segment
 FROM Scores
 )
