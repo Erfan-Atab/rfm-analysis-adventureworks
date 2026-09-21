@@ -120,7 +120,7 @@ SELECT DISTINCT CustomerType,
 		CAST(AVG(CAST(DATEDIFF(DAY, FirstOrderDate, LastOrderDate) / (Frequency - 1) AS decimal(10,2))) 
 			OVER(PARTITION BY CustomerType) AS decimal(10,2)) AS AvgDaysBetweenOrders,
 		PERCENTILE_CONT(0.5)
-		WITHIN GROUP(ORDER BY CAST(DATEDIFF(DAY, FirstOrderDate, LastOrderDate) / (Frequency - 1) AS decimal(10,2)))
+		WITHIN GROUP(ORDER BY CAST(CAST(DATEDIFF(DAY, FirstOrderDate, LastOrderDate) AS decimal(5,2)) / CAST((Frequency - 1) AS decimal(5,2)) AS decimal(10,2)))
 		OVER(PARTITION BY CustomerType) AS MedianDaysBetweenOrders
 FROM rfm.vw_CustomerRFM
 WHERE Frequency > 1
@@ -155,3 +155,15 @@ FROM bucket
 GROUP BY CustomerType, BucketOrder, RecencyBucket
 ORDER BY CustomerType, BucketOrder;
 
+-- Why not NTILE ?
+WITH Quintiles AS (
+	SELECT CustomerType,
+			Frequency,
+			NTILE(5) OVER(PARTITION BY CustomerType ORDER BY Frequency) AS QuintileNumber
+	FROM rfm.vw_CustomerRFM
+)
+SELECT CustomerType,
+		QuintileNumber,
+		MAX(Frequency) AS MaxFrequencyInQuintile
+FROM Quintiles
+GROUP BY CustomerType, QuintileNumber;
