@@ -38,7 +38,7 @@ Erfan Atab, [github.com/Erfan-Atab](https://github.com/Erfan-Atab)
 
 ## تحلیل RFM روی AdventureWorks
 
-این پروژه پایانی درس مدیریت پایگاه داده SQL Server در دانشگاه تهران است. مشتریان پایگاه داده AdventureWorks را با مدل RFM و فقط با T-SQL بخش بندی کردم. گزارش کامل در [docs/RFM_Final_Report.pdf](docs/RFM_Final_Report.pdf) است.
+مشتریان پایگاه داده AdventureWorks را با مدل RFM و فقط با T-SQL بخش بندی کردم. گزارش کامل در [docs/RFM_Final_Report.pdf](docs/RFM_Final_Report.pdf) است.
 
 ### کاری که انجام دادم
 
