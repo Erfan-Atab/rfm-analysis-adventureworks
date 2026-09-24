@@ -1,6 +1,6 @@
 # RFM Analysis on AdventureWorks
 
-This is my final project for the SQL Server database course at the University of Tehran. I segmented the customers of the AdventureWorks sample database with the RFM model, using only T-SQL. The full report (in Persian) is in [docs/RFM_Final_Report.pdf](docs/RFM_Final_Report.pdf).
+I segmented the customers of the AdventureWorks sample database with the RFM model, using only T-SQL. The full report (in Persian) is in [docs/RFM_Final_Report.pdf](docs/RFM_Final_Report.pdf).
 
 [نسخه فارسی در پایین صفحه](#fa)
 
